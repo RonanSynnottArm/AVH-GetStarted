@@ -57,7 +57,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1
       with:
         role-to-assume: arn:aws:iam::720528183931:role/Proj-vht-assume-role
-        aws-region: $AWS_DEFAULT_REGION
+        aws-region: env.AWS_DEFAULT_REGION
 
     - name: Run tests
       id: avh
