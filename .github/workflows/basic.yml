@@ -30,6 +30,7 @@ env:
   AWS_SECURITY_GROUP_ID: ${{ secrets.AWS_SECURITY_GROUP_ID }}
   AWS_SUBNET_ID: ${{ secrets.AWS_SUBNET_ID }}
   AWS_INSTANCE_TYPE: t2.micro
+  AWS_ROLE: ${{ secrets.AWS_ROLE }}
 jobs:
   ci_test:
     runs-on: ubuntu-latest
@@ -57,7 +58,7 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::707112978308:role/Proj-vht-assume-role
+        role-to-assume: ${{ env.AWS_ROLE }}
         aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
     - name: Run tests
